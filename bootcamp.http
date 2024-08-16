@@ -1,0 +1,42 @@
+
+GET http://localhost:3001/api/word_game?sentence=Today is friday HTTP/1.1
+
+###
+
+POST http://localhost:3001/api/phonebill/total HTTP/1.1
+Content-type: application/json
+
+{
+  "bill": "call,sms,call"
+ 
+}
+
+###
+GET  http://localhost:3001/api/phonebill/prices?call= 2.75&sms=0.65 HTTP/1.1
+
+###
+# POST http://localhost:3001/api/phonebill/prices HTTP/1.1
+# Content-type: application/json
+
+# {
+#    "call": 2.75,
+#   "sms": 0.65
+# }
+
+###
+POST http://localhost:3001/api/phonebill/price HTTP/1.1
+Content-type: application/json
+ 
+{
+  "type": "call",
+  "price": 2.85
+}
+
+###
+POST http://localhost:3001/api/enough_airtime/enough HTTP/1.1
+Content-type: application/json
+
+{
+    "projectedUsage": "call,sms,call",
+    "availableAirtime" : 54
+}

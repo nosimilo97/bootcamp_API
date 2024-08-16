@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="alpineData.js"></script> <!-- Ensure alpineData.js has the correct component -->
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+        h1, h2 {
+            color: #007BFF;
+        }
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        p {
+            margin: 10px 0;
+        }
+        .label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" x-data="bootcampApi()">
+       
+        <h1>Sentence Analyzer</h1>
+         <div class="Analyzer">
+        <input type="text" x-model="sentence" placeholder="Enter a sentence" />
+        <button x-on:click="analyzeSentence()">Analyze</button>
+        <div>
+            <p><strong>Longest Word:</strong> <span x-text="longestWord"></span></p>
+            <p><strong>Shortest Word:</strong> <span x-text="ShortestWord"></span></p>
+            <p><strong>Total Length of Words:</strong> <span x-text="wordLengths"></span></p>
+        </div>
+</div>
+        <!-- <h1>Phone Bill Calculator</h1>
+        <div>
+            <h2>Enter bill details</h2>
+            <input type="text" x-model="billString" placeholder="Enter calls and SMS (e.g., 'call, sms, call')" />
+            <button @click="calculateBill()">Calculate</button>
+            <p><strong>Total Bill:</strong> <span x-text="total"></span></p>
+        </div> -->
+
+        <!-- <div>
+            <h2>Update Prices</h2>
+            <label class="label">Call Price: R</label>
+            <input type="number" x-model.number="callCost" step="0.01" min="0" />
+            <label class="label">SMS Price: R</label>
+            <input type="number" x-model.number="smsCost" step="0.01" min="0" />
+            <button @click="updatePrices()">Update Prices</button>
+            <p><strong>Current Prices:</strong> Call: R <span x-text="prices.call"></span>, SMS: R <span x-text="prices.sms"></span></p>
+        </div> -->
+
+        <!-- <h1>Airtime Calculator</h1>
+        <div>
+            <h2>Enter projected usage:</h2>
+            <input type="text" x-model="projectedUsage" placeholder="Enter usage (e.g., 'call, data, sms')" />
+            <h2>Enter available airtime:</h2>
+            <input type="number" x-model.number="availableAirtime" placeholder="Enter available airtime (e.g., 20)" />
+            <button @click="calculateAirtime()">Calculate</button>
+            <p><strong>Remaining Airtime:</strong> <span x-text="remainingAirtime"></span></p>
+        </div> -->
+
+</div>
+        
+</body>
+</html>
