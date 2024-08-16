@@ -23,6 +23,7 @@
             background-color: white;
             padding: 20px;
             border-radius: 10px;
+            margin-top: 1.5em;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 600px;
             width: 100%;
@@ -57,21 +58,28 @@
             margin: 10px 0 5px;
             font-weight: bold;
         }
+        .phone-bill, .Analyzer {
+background-color: lightgray;
+border-radius: 1em;
+margin: 1em;
+padding: 1em;
+        }
     </style>
 </head>
 <body>
     <div class="container" x-data="bootcampApi()">
-       
+      <div class="Analyzer">
         <h1>Sentence Analyzer</h1>
-         <div class="Analyzer">
+        
         <input type="text" x-model="sentence" placeholder="Enter a sentence" />
         <button x-on:click="analyzeSentence()">Analyze</button>
-        <div>
+       <div>
             <p><strong>Longest Word:</strong> <span x-text="longestWord"></span></p>
             <p><strong>Shortest Word:</strong> <span x-text="ShortestWord"></span></p>
             <p><strong>Total Length of Words:</strong> <span x-text="wordLengths"></span></p>
-        </div>
 </div>
+</div>
+<div class="phone-bill">
         <h1>Phone Bill Calculator</h1>
         <div>
             <h2>Enter bill details</h2>
@@ -89,7 +97,7 @@
             <button @click="updatePrices()">Update Prices</button>
             <p><strong>Current Prices:</strong> Call: R <span x-text="prices.call"></span>, SMS: R <span x-text="prices.sms"></span></p>
         </div>
-
+</div>
         <!-- <h1>Airtime Calculator</h1>
         <div>
             <h2>Enter projected usage:</h2>
