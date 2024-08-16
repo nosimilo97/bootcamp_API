@@ -17,7 +17,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+          
         }
         .container {
             background-color: white;
@@ -27,6 +27,9 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 600px;
             width: 100%;
+        }
+        h1 {
+            text-align: center;
         }
         h1, h2 {
             color: #007BFF;
@@ -58,7 +61,7 @@
             margin: 10px 0 5px;
             font-weight: bold;
         }
-        .phone-bill, .Analyzer {
+        .phone-bill, .Analyzer, .enough {
 background-color: lightgray;
 border-radius: 1em;
 margin: 1em;
@@ -98,7 +101,8 @@ padding: 1em;
             <p><strong>Current Prices:</strong> Call: R <span x-text="prices.call"></span>, SMS: R <span x-text="prices.sms"></span></p>
         </div>
 </div>
-        <!-- <h1>Airtime Calculator</h1>
+<div class="enough">
+        <h1>Airtime Calculator</h1>
         <div>
             <h2>Enter projected usage:</h2>
             <input type="text" x-model="projectedUsage" placeholder="Enter usage (e.g., 'call, data, sms')" />
@@ -106,8 +110,8 @@ padding: 1em;
             <input type="number" x-model.number="availableAirtime" placeholder="Enter available airtime (e.g., 20)" />
             <button @click="calculateAirtime()">Calculate</button>
             <p><strong>Remaining Airtime:</strong> <span x-text="remainingAirtime"></span></p>
-        </div> -->
-
+        </div>
+</div>
 </div>
         
 </body>
