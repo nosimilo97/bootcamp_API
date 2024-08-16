@@ -57,36 +57,20 @@ document.addEventListener("alpine:init", () => {
             const data = await response.json();
             console.log(data);
             this.total = data.total;
+            this.updatePrices();
         } catch (error) {
             console.error('Error calculating bill:', error);
             this.total = null;
         }
     },
 
-    async updatePrices() {
-        try {
-            const response = await fetch('http://localhost:3001/api/phonebill/prices', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    call: this.callCost,
-                    sms: this.smsCost
-                })
-            });
+    
 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-
-            const data = await response.json();
-            this.prices = data;
-        } catch (error) {
-            console.error('Error updating prices:', error);
-        }
+    updatePrices() {
+        this.prices.call = this.callCost;
+        this.prices.sms = this.smsCost;
+        this.calculateBill();
     },
-
     async init() {
         try {
             const response = await fetch('http://localhost:3001/api/phonebill/prices');
