@@ -19,7 +19,7 @@ document.addEventListener("alpine:init", () => {
 
       async analyzeSentence() {
         try {
-          const res = await fetch(`/word_game?sentence=${this.sentence}`, {
+          const res = await fetch(`http://localhost:3001/api/word_game?sentence=${this.sentence}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ document.addEventListener("alpine:init", () => {
       },
       async calculateBill() {
         try {
-            const response = await fetch('/api/phonebill/total', {
+            const response = await fetch('http://localhost:3001/api/phonebill/total', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ document.addEventListener("alpine:init", () => {
     },
     async init() {
         try {
-            const response = await fetch('/api/phonebill/prices');
+            const response = await fetch('http://localhost:3001/api/phonebill/prices');
             if (response.ok) {
                 const data = await response.json();
                 this.prices = data;
@@ -84,7 +84,7 @@ document.addEventListener("alpine:init", () => {
     },
     async calculateAirtime() {
       try {
-          const response = await fetch('/api/enough_airtime/enough', {
+          const response = await fetch('http://localhost:3001/api/enough_airtime/enough', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
