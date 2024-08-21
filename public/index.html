@@ -83,24 +83,20 @@ padding: 1em;
 </div>
 </div>
 <div class="phone-bill">
-        <h1>Phone Bill Calculator</h1>
-        <div>
-            <h2>Enter bill details</h2>
+<h1>Phone bill Calculator</h1>
+<label class="label">Enter bill details</label>
             <input type="text" x-model="billString" placeholder="Enter calls and SMS (e.g., 'call, sms, call')" />
+
+            <label class="label">Call Price: R <span x-text="prices.call"></span></label>
+            <input type="number" x-model.number="callCost" step="0.01" min="0" value="2.75"/>
+            <label class="label">SMS Price: R <span x-text="prices.sms"></span></label>
+            <input type="number" x-model.number="smsCost" step="0.01" min="0" value="0.65"/>
+            <button @click="updatePrices()">Update Prices</button>
             <button @click="calculateBill()">Calculate</button>
             <p><strong>Total Bill:</strong> <span x-text="total"></span></p>
-        </div> 
+       </div>
 
-         <div>
-            <h2>Update Prices</h2>
-            <label class="label">Call Price: R</label>
-            <input type="number" x-model.number="callCost" step="0.01" min="0" />
-            <label class="label">SMS Price: R</label>
-            <input type="number" x-model.number="smsCost" step="0.01" min="0" />
-            <button @click="updatePrices()">Update Prices</button>
-            <p><strong>Current Prices:</strong> Call: R <span x-text="prices.call"></span>, SMS: R <span x-text="prices.sms"></span></p>
-        </div>
-</div>
+
 <div class="enough">
         <h1>Airtime Calculator</h1>
         <div>

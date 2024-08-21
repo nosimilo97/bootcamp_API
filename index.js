@@ -142,6 +142,7 @@ app.get('/api/phonebill/prices', function(req, res){
    const price = parseFloat(req.body.price);
    
    if (type === 'sms' || type === 'call') {
+    prices[type] = price;
     return res.json({
         status: 'success',
         message: `The ${type} price was set to ${price}`

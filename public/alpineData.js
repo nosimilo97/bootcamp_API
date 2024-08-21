@@ -34,7 +34,7 @@ document.addEventListener("alpine:init", () => {
           console.log('RESPONSE', json);
           this.ShortestWord= json.ShortestWord || 'No shortest word found';
           this.longestWord = json.longestWord;
-          this.wordLengths = json.wordLengths; // Corrected capitalization
+          this.wordLengths = json.wordLengths; 
           
         } catch (error) {
           console.error('Error fetching sentence analysis:', error);
@@ -56,27 +56,58 @@ document.addEventListener("alpine:init", () => {
 
             const data = await response.json();
             console.log(data);
-            this.total = data.total;
-            this.updatePrices();
+            this.total = this.prices.call + this.prices.sms;
         } catch (error) {
             console.error('Error calculating bill:', error);
             this.total = null;
         }
     },
 
-    
+    async updatePrices() {
+      try {
+          const response = await fetch(`https://bootcamp-api-6ioq.onrender.com/api/phonebill/price`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  type: 'call',
+                  price: this.callCost
+              })
+          });
 
-    updatePrices() {
-        this.prices.call = this.callCost;
-        this.prices.sms = this.smsCost;
-        this.calculateBill();
-    },
+          if (response.ok) {
+              const responseSms = await fetch(`https://bootcamp-api-6ioq.onrender.com/api/phonebill/price`, {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                      type: 'sms',
+                      price: this.smsCost
+                  })
+              });
+
+              const data = await response.json();
+              this.prices = {
+                  call: this.callCost,
+                  sms: this.smsCost
+              };
+          }
+      } catch (error) {
+          console.error('Error updating prices:', error);
+      }
+  },    
+
+   
     async init() {
         try {
-            const response = await fetch(`/api/phonebill/prices`);
+            const response = await fetch(`https://bootcamp-api-6ioq.onrender.com/api/phonebill/prices`);
             if (response.ok) {
                 const data = await response.json();
                 this.prices = data;
+                this.callCost = data.call;
+                this.smsCost = data.sms;
             }
         } catch (error) {
             console.error('Error fetching initial prices:', error);
