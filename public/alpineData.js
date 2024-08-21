@@ -56,7 +56,9 @@ document.addEventListener("alpine:init", () => {
 
             const data = await response.json();
             console.log(data);
-            this.total = this.prices.call + this.prices.sms;
+            this.total = data.total;
+            // this.total = this.prices.call + this.prices.sms;
+            this.updatePrices();
         } catch (error) {
             console.error('Error calculating bill:', error);
             this.total = null;
@@ -99,7 +101,7 @@ document.addEventListener("alpine:init", () => {
       }
   },    
 
-   
+    
     async init() {
         try {
             const response = await fetch(`https://bootcamp-api-6ioq.onrender.com/api/phonebill/prices`);
