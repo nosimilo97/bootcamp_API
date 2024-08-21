@@ -19,7 +19,7 @@ document.addEventListener("alpine:init", () => {
 
       async analyzeSentence() {
         try {
-          const res = await fetch(`https://bootcamp-api-6ioq.onrender.com/word_game?sentence=${this.sentence}`, {
+          const res = await fetch(`http://localhost:3001/word_game?sentence=${this.sentence}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ document.addEventListener("alpine:init", () => {
             throw new Error('Network response was not ok');
           }
 
-          const json = await res.json();
+          const json = await res.json(); 
           console.log('RESPONSE', json);
           this.ShortestWord= json.ShortestWord || 'No shortest word found';
           this.longestWord = json.longestWord;

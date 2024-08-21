@@ -14,6 +14,7 @@ app.use(express.urlencoded({extended: false }))
 app.use(express.json())
 app.use(express.static('public'));
 app.use(cors())
+const PORT = process.env.PORT || 3001;
 
 function longestWord(sentence) {
     // Split the sentence into an array of words
@@ -197,7 +198,7 @@ const availableAirtime =req.body.availableAirtime;
 });
 
 
-app.listen(3001, function () {
+app.listen(PORT, function () {
     console.log('Example app listening on port 3001!');
     
 })
