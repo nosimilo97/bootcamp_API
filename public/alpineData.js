@@ -57,7 +57,6 @@ document.addEventListener("alpine:init", () => {
             const data = await response.json();
             console.log(data);
             this.total = data.total;
-            // this.total = this.prices.call + this.prices.sms;
             this.updatePrices();
         } catch (error) {
             console.error('Error calculating bill:', error);
